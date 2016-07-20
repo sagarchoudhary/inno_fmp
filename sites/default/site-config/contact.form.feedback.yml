@@ -1,0 +1,12 @@
+uuid: 8a0f312c-c202-4ce2-9033-f34212435d7d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: c4zaT5cyPxuTXI6JOWt3qRtMvICT9tHB6d9a5VG-CmQ
+id: feedback
+label: 'Website feedback'
+recipients:
+  - sagar.choudhary@innoraft.com
+reply: ''
+weight: 0
