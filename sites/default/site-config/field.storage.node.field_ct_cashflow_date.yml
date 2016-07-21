@@ -1,12 +1,12 @@
-uuid: 5fe3588c-3a63-4573-954e-eb4ed592ffb1
+uuid: 59b3fac8-c049-4a33-9d96-caa920d77007
 langcode: en
 status: true
 dependencies:
   module:
     - datetime
     - node
-id: node.field_ct_cashinflow_date
-field_name: field_ct_cashinflow_date
+id: node.field_ct_cashflow_date
+field_name: field_ct_cashflow_date
 entity_type: node
 type: datetime
 settings:

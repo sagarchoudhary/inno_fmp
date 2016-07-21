@@ -1,0 +1,22 @@
+uuid: 44026ef9-1c94-4899-919e-57dace7f39e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.cash_outflow
+  module:
+    - text
+id: node.cash_outflow.body
+field_name: body
+entity_type: node
+bundle: cash_outflow
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

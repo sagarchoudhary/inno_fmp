@@ -1,12 +1,12 @@
-uuid: 9bcd2871-e323-48b0-8142-ffc77c9b08e1
+uuid: 79dd1e6c-3766-4b98-a544-e805703f2601
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_ct_cashinflow_amount
+    - field.storage.node.field_ct_cashflow_amount
     - node.type.cash_inflow
-id: node.cash_inflow.field_ct_cashinflow_amount
-field_name: field_ct_cashinflow_amount
+id: node.cash_inflow.field_ct_cashflow_amount
+field_name: field_ct_cashflow_amount
 entity_type: node
 bundle: cash_inflow
 label: Amount

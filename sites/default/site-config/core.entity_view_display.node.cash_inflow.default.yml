@@ -4,9 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.node.cash_inflow.body
+    - field.field.node.cash_inflow.field_ct_cashflow_amount
+    - field.field.node.cash_inflow.field_ct_cashflow_date
     - field.field.node.cash_inflow.field_ct_cashflow_project
-    - field.field.node.cash_inflow.field_ct_cashinflow_amount
-    - field.field.node.cash_inflow.field_ct_cashinflow_date
     - field.field.node.cash_inflow.field_ct_service_type
     - node.type.cash_inflow
   module:
@@ -24,15 +24,8 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
-  field_ct_cashflow_project:
-    weight: 104
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_ct_cashinflow_amount:
-    weight: 103
+  field_ct_cashflow_amount:
+    weight: 106
     label: above
     settings:
       thousand_separator: ''
@@ -41,14 +34,21 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_decimal
-  field_ct_cashinflow_date:
-    weight: 102
+  field_ct_cashflow_date:
+    weight: 107
     label: above
     settings:
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
+  field_ct_cashflow_project:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_ct_service_type:
     weight: 105
     label: above

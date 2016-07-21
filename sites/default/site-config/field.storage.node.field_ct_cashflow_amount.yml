@@ -1,11 +1,11 @@
-uuid: ec079759-0a0f-4467-8aea-0a01d6b46f26
+uuid: 44d1b012-c729-41bf-884a-d60458bd088e
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_ct_cashinflow_amount
-field_name: field_ct_cashinflow_amount
+id: node.field_ct_cashflow_amount
+field_name: field_ct_cashflow_amount
 entity_type: node
 type: float
 settings: {  }

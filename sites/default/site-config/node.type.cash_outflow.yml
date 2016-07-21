@@ -1,0 +1,18 @@
+uuid: df0f940f-5c64-4345-ad05-1a42566791bc
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Cash Outflow'
+type: cash_outflow
+description: 'Data for cash flow'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

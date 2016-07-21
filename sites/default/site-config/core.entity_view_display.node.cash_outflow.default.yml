@@ -1,0 +1,24 @@
+uuid: d7afb264-edc2-4f21-8b44-7a077f27afc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.cash_outflow.body
+    - node.type.cash_outflow
+  module:
+    - text
+    - user
+id: node.cash_outflow.default
+targetEntityType: node
+bundle: cash_outflow
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }
