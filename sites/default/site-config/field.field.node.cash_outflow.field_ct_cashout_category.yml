@@ -1,0 +1,21 @@
+uuid: 2250ca9e-9590-4335-b1ac-3732447397c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ct_cashout_category
+    - node.type.cash_outflow
+  module:
+    - options
+id: node.cash_outflow.field_ct_cashout_category
+field_name: field_ct_cashout_category
+entity_type: node
+bundle: cash_outflow
+label: Category
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,45 @@
+uuid: 0f46cc95-4ab8-4e46-bd80-dde7d8b5ca8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_ct_cashout_sub_category
+field_name: field_ct_cashout_sub_category
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '0'
+      label: travel
+    -
+      value: '1'
+      label: asset
+    -
+      value: '2'
+      label: internet
+    -
+      value: '3'
+      label: server
+    -
+      value: '4'
+      label: cash
+    -
+      value: '5'
+      label: tax
+    -
+      value: '6'
+      label: salary
+    -
+      value: '7'
+      label: finance
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

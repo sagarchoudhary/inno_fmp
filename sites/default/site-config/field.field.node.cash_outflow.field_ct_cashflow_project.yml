@@ -1,0 +1,28 @@
+uuid: 225b96c1-95d5-48f8-aa00-698380b57274
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ct_cashflow_project
+    - node.type.cash_outflow
+    - taxonomy.vocabulary.vocab_project
+id: node.cash_outflow.field_ct_cashflow_project
+field_name: field_ct_cashflow_project
+entity_type: node
+bundle: cash_outflow
+label: Project
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      vocab_project: vocab_project
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

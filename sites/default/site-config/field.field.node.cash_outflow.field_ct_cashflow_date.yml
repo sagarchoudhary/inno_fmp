@@ -1,0 +1,21 @@
+uuid: 52c12611-7931-4dbc-8445-9bca1bb2a5a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ct_cashflow_date
+    - node.type.cash_outflow
+  module:
+    - datetime
+id: node.cash_outflow.field_ct_cashflow_date
+field_name: field_ct_cashflow_date
+entity_type: node
+bundle: cash_outflow
+label: Date
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

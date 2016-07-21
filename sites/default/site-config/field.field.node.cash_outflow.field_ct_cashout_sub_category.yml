@@ -1,0 +1,21 @@
+uuid: 334c8693-4fdc-4b43-86de-0c6c5d49f590
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ct_cashout_sub_category
+    - node.type.cash_outflow
+  module:
+    - options
+id: node.cash_outflow.field_ct_cashout_sub_category
+field_name: field_ct_cashout_sub_category
+entity_type: node
+bundle: cash_outflow
+label: 'Cash Out Sub Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

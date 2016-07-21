@@ -4,8 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.cash_outflow.body
+    - field.field.node.cash_outflow.field_ct_cashflow_amount
+    - field.field.node.cash_outflow.field_ct_cashflow_date
+    - field.field.node.cash_outflow.field_ct_cashflow_project
+    - field.field.node.cash_outflow.field_ct_cashout_category
+    - field.field.node.cash_outflow.field_ct_cashout_sub_category
+    - field.field.node.cash_outflow.field_ct_cashoutflow_expend_type
     - node.type.cash_outflow
   module:
+    - datetime
     - path
     - text
 id: node.cash_outflow.default
@@ -26,6 +33,40 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_ct_cashflow_amount:
+    weight: 33
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  field_ct_cashflow_date:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_ct_cashflow_project:
+    weight: 34
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_ct_cashout_category:
+    weight: 37
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_ct_cashout_sub_category:
+    weight: 36
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_ct_cashoutflow_expend_type:
+    weight: 35
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
   path:
     type: path
     weight: 30
