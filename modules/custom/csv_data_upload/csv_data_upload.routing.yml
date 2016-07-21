@@ -1,0 +1,8 @@
+csv_data_upload.form:
+  path: 'csv-upload'
+  defaults:
+    _title: 'CSV Uploader'
+    _form: '\Drupal\csv_data_upload\Form\csvuploaderForm'
+  requirements:
+    _permission: 'access content'
+
