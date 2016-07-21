@@ -1,0 +1,22 @@
+uuid: b6c8d345-bb38-4681-a15a-67e704460395
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.cash_inflow
+  module:
+    - text
+id: node.cash_inflow.body
+field_name: body
+entity_type: node
+bundle: cash_inflow
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

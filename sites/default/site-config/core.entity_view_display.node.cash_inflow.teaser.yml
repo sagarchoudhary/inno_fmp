@@ -1,0 +1,26 @@
+uuid: 66369ead-9bad-4392-91e4-fba7649a12f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.cash_inflow.body
+    - node.type.cash_inflow
+  module:
+    - text
+    - user
+id: node.cash_inflow.teaser
+targetEntityType: node
+bundle: cash_inflow
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

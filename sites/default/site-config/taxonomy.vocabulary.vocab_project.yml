@@ -1,0 +1,9 @@
+uuid: 47dd700c-ea7a-4a10-aef4-faab65059b4b
+langcode: en
+status: true
+dependencies: {  }
+name: Project
+vid: vocab_project
+description: Projects
+hierarchy: 0
+weight: 0

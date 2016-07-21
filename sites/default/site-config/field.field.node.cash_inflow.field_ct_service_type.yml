@@ -1,0 +1,28 @@
+uuid: ff7fb465-0598-4521-942a-a0b82d0574d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ct_service_type
+    - node.type.cash_inflow
+    - taxonomy.vocabulary.vocab_service_type
+id: node.cash_inflow.field_ct_service_type
+field_name: field_ct_service_type
+entity_type: node
+bundle: cash_inflow
+label: 'Service Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      vocab_service_type: vocab_service_type
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

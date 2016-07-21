@@ -1,0 +1,9 @@
+uuid: d79175c5-cad0-477f-9326-b081df1d5440
+langcode: en
+status: true
+dependencies: {  }
+name: 'Service Type'
+vid: vocab_service_type
+description: 'Type of service provided'
+hierarchy: 0
+weight: 0
