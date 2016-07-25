@@ -1,0 +1,99 @@
+diff --git a/js/visualization.js b/js/visualization.js
+index e3d69d1..92bbec6 100644
+--- a/js/visualization.js
++++ b/js/visualization.js
+@@ -1,8 +1,10 @@
+ (function($) {
+ 
+-google.load("visualization", "1", {packages:["corechart", "geomap"]});
++  if (typeof google !== 'undefined') {
++    google.load("visualization", "1", {packages:["corechart", "geomap"]});
++  }
+ 
+-Drupal.visualization = Drupal.visualization || {};
+-Drupal.visualization.charts = Drupal.visualization.charts || {};
++  Drupal.visualization = Drupal.visualization || {};
++  Drupal.visualization.charts = Drupal.visualization.charts || {};
+ 
+ })(jQuery);
+diff --git a/src/Plugin/visualization/handler/GoogleVisualizationAPIHandler.php b/src/Plugin/visualization/handler/GoogleVisualizationAPIHandler.php
+index 91e1b9f..4d09c86 100644
+--- a/src/Plugin/visualization/handler/GoogleVisualizationAPIHandler.php
++++ b/src/Plugin/visualization/handler/GoogleVisualizationAPIHandler.php
+@@ -89,11 +89,7 @@ class GoogleVisualizationAPIHandler implements VisualizationHandlerInterface {
+     );
+ 
+     // Add Drupal.settings for this chart.
+-    $chart['#attached'] = [
+-      'drupalSettings'=> [
+-        'visualization' => [$chart_id => $information],
+-      ]
+-    ];
++    $chart['#attached']['drupalSettings']['visualization'] = [$chart_id => $information];
+ 
+     return $chart;
+   }
+@@ -103,7 +99,7 @@ class GoogleVisualizationAPIHandler implements VisualizationHandlerInterface {
+    */
+   public function postRender() {
+     if (!$this->addedJavascript) {
+-      $js_libs['#attached']['library'][] = 'visualization/gva';
++      $js_libs['#attached']['library'] = 'visualization/gva';
+       drupal_render($js_libs);
+ 
+       $this->addedJavascript = TRUE;
+diff --git a/src/Plugin/visualization/handler/HighchartsHandler.php b/src/Plugin/visualization/handler/HighchartsHandler.php
+index 780972e..2035e1c 100644
+--- a/src/Plugin/visualization/handler/HighchartsHandler.php
++++ b/src/Plugin/visualization/handler/HighchartsHandler.php
+@@ -87,7 +87,7 @@ class HighchartsHandler implements VisualizationHandlerInterface {
+ 
+         $serie->data = array();
+         foreach ($data as $row) {
+-          $value = (int) $row[$name];
++          $value = (int) $row[$name]->__toString();
+ 
+           if (!empty($column['enabled'])) {
+             $serie->data[] = (object) array('name' => SafeMarkup::checkPlain(strip_tags($row[$options['xAxis']['labelField']])), 'y' => $value);
+@@ -128,10 +128,8 @@ class HighchartsHandler implements VisualizationHandlerInterface {
+     );
+ 
+     // Add Drupal.settings for this chart.
+-    $chart['#attached']['js'][] = array(
+-      'type' => 'setting',
+-      'data' => array ('visualization' => array($chart_id => $information)),
+-    );
++    $chart['#attached']['drupalSettings']['visualization'] = [$chart_id => $information];
++
+ 
+     return $chart;
+   }
+@@ -144,11 +142,7 @@ class HighchartsHandler implements VisualizationHandlerInterface {
+       module_load_include('module', 'libraries', 'libraries');
+       $path = libraries_get_path('highcharts');
+ 
+-      $js_libs['#attached']['js'] = array(
+-        array('type' => 'file', 'data' => $path . '/js/highcharts.js'),
+-        array('type' => 'file', 'scope' => 'footer', 'data' => drupal_get_path('module', 'visualization') . '/js/visualization.js'),
+-        array('type' => 'file', 'scope' => 'footer', 'data' => drupal_get_path('module', 'visualization') . '/js/highcharts.js'),
+-      );
++      $js_libs['#attached']['library'] = 'visualization/highcharts';
+ 
+       drupal_render($js_libs);
+ 
+diff --git a/visualization.libraries.yml b/visualization.libraries.yml
+index 4ca2d4d..33b3870 100644
+--- a/visualization.libraries.yml
++++ b/visualization.libraries.yml
+@@ -13,3 +13,11 @@ gva:
+     js/gva.js: {scope: footer}
+   dependencies:
+     - visualization/api
++
++highcharts:
++  js:
++    /libraries/highcharts/js/highcharts.js: { }
++    /libraries/highcharts/js/modules/exporting.js: { }
++    js/highcharts.js: {scope: footer}
++  dependencies:
++    - visualization/api

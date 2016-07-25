@@ -13,3 +13,11 @@ gva:
     js/gva.js: {scope: footer}
   dependencies:
     - visualization/api
+
+highcharts:
+  js:
+    /libraries/highcharts/js/highcharts.js: { }
+    /libraries/highcharts/js/modules/exporting.js: { }
+    js/highcharts.js: {scope: footer}
+  dependencies:
+    - visualization/api

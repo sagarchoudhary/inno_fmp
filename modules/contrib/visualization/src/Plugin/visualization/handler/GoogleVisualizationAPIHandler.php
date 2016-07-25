@@ -89,11 +89,7 @@ class GoogleVisualizationAPIHandler implements VisualizationHandlerInterface {
     );
 
     // Add Drupal.settings for this chart.
-    $chart['#attached'] = [
-      'drupalSettings'=> [
-        'visualization' => [$chart_id => $information],
-      ]
-    ];
+    $chart['#attached']['drupalSettings']['visualization'] = [$chart_id => $information];
 
     return $chart;
   }
@@ -103,7 +99,7 @@ class GoogleVisualizationAPIHandler implements VisualizationHandlerInterface {
    */
   public function postRender() {
     if (!$this->addedJavascript) {
-      $js_libs['#attached']['library'][] = 'visualization/gva';
+      $js_libs['#attached']['library'] = 'visualization/gva';
       drupal_render($js_libs);
 
       $this->addedJavascript = TRUE;

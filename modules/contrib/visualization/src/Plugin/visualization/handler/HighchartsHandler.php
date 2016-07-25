@@ -87,7 +87,7 @@ class HighchartsHandler implements VisualizationHandlerInterface {
 
         $serie->data = array();
         foreach ($data as $row) {
-          $value = (int) $row[$name];
+          $value = (int) $row[$name]->__toString();
 
           if (!empty($column['enabled'])) {
             $serie->data[] = (object) array('name' => SafeMarkup::checkPlain(strip_tags($row[$options['xAxis']['labelField']])), 'y' => $value);
@@ -128,10 +128,8 @@ class HighchartsHandler implements VisualizationHandlerInterface {
     );
 
     // Add Drupal.settings for this chart.
-    $chart['#attached']['js'][] = array(
-      'type' => 'setting',
-      'data' => array ('visualization' => array($chart_id => $information)),
-    );
+    $chart['#attached']['drupalSettings']['visualization'] = [$chart_id => $information];
+
 
     return $chart;
   }
@@ -144,11 +142,7 @@ class HighchartsHandler implements VisualizationHandlerInterface {
       module_load_include('module', 'libraries', 'libraries');
       $path = libraries_get_path('highcharts');
 
-      $js_libs['#attached']['js'] = array(
-        array('type' => 'file', 'data' => $path . '/js/highcharts.js'),
-        array('type' => 'file', 'scope' => 'footer', 'data' => drupal_get_path('module', 'visualization') . '/js/visualization.js'),
-        array('type' => 'file', 'scope' => 'footer', 'data' => drupal_get_path('module', 'visualization') . '/js/highcharts.js'),
-      );
+      $js_libs['#attached']['library'] = 'visualization/highcharts';
 
       drupal_render($js_libs);
 

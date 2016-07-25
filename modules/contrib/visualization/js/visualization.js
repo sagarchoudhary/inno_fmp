@@ -1,8 +1,10 @@
 (function($) {
 
-google.load("visualization", "1", {packages:["corechart", "geomap"]});
+  if (typeof google !== 'undefined') {
+    google.load("visualization", "1", {packages:["corechart", "geomap"]});
+  }
 
-Drupal.visualization = Drupal.visualization || {};
-Drupal.visualization.charts = Drupal.visualization.charts || {};
+  Drupal.visualization = Drupal.visualization || {};
+  Drupal.visualization.charts = Drupal.visualization.charts || {};
 
 })(jQuery);
