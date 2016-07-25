@@ -12,6 +12,8 @@ function csv_importer($data, $header, $cash_flow_type, $context) {
     $context['sandbox']['progress'] = 0;
     $context['sandbox']['current_node'] = 0;
     $context['sandbox']['max'] = sizeof($data);
+    $context['sandbox']['success'] = 0;
+    $context['sandbox']['fail'] = 0;
   }
 
   // For this, we decide that we can safely process
@@ -22,11 +24,18 @@ function csv_importer($data, $header, $cash_flow_type, $context) {
 
   for ($i = $current_node; $i < $max_node; $i++) {
     if ($cash_flow_type == 'in') {
-    _save_cash_inflow_node($data[$i], $header);
+    $result = _save_cash_inflow_node($data[$i], $header);
     }
     if ($cash_flow_type == 'out') {
-    _save_cash_outflow_node($data[$i], $header);
+    $result = _save_cash_outflow_node($data[$i], $header);
     }
+    if ($result) {
+      $context['sandbox']['success'] = $context['sandbox']['success'] + 1;
+    }
+    else {
+      $context['sandbox']['fail'] = $context['sandbox']['fail'] + 1;
+    }
+    //$context['message'] = t('Total row processed ' . $i . 'out of ' . $max_node);
     $context['sandbox']['progress']++;
 
 
@@ -40,6 +49,12 @@ function csv_importer($data, $header, $cash_flow_type, $context) {
   // and provide an estimation of the completion level we reached.
   if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
     $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }
+  $success = !empty($context['sandbox']['success']) ? $context['sandbox']['success'] : 0;
+  $fail = !empty($context['sandbox']['fail']) ? $context['sandbox']['fail'] : 0;
+  drupal_set_message(t($success . ' Record imported'), $type = 'success');
+  if (!empty($fail)) {
+    drupal_set_message(t($fail . ' Failed to import'), $type = 'error');
   }
 }
 
@@ -110,6 +125,7 @@ function _save_cash_outflow_node($data, $header) {
   ]);
 
   $node->save();
+  return TRUE;
 }
 
 
@@ -162,6 +178,7 @@ function _save_cash_inflow_node($data, $header) {
   ]);
 
   $node->save();
+  return TRUE;
 }
 
 

@@ -47,7 +47,7 @@ class csvuploaderForm extends FormBase {
     'file_validate_extensions' => array( 'csv' ),
     );
 
-    if ($file = file_save_upload('csvfile', $validators, "public://", 0, FILE_EXISTS_REPLACE) ) {
+    if ($file = file_save_upload('csvfile', $validators, "public://csv_import", 0, FILE_EXISTS_RENAME) ) {
       $form_state->setValue('csvuploader', $file->getFileUri());
     }
     else {
