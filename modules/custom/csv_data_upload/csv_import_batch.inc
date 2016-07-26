@@ -67,63 +67,101 @@ function _save_cash_outflow_node($data, $header) {
   $amount = isset($data[array_search('amount', $header)]) ? $data[array_search('amount', $header)] : NULL;
   $expendtype = isset($data[array_search('expendtype', $header)]) ? $data[array_search('expendtype', $header)] : NULL;
 
-
+  $final_date = $project_tid = $category_value = $cashoutcategory_value = $expendtype  = NULL;
   //checking  project value
-  if (!DataValidation::check_taxonomy_term($project, 'vocab_project')) {
-    //todo logging the error.
-    return;
+  if (!empty($project)) {
+    if (!DataValidation::check_taxonomy_term($project, 'vocab_project')) {
+      //todo logging the error.
+      return;
+    }
+    $project_tid_array = taxonomy_term_load_multiple_by_name($project, 'vocab_project');
+    $project_tid = ((array_keys($project_tid_array)[0]));
   }
 
-  $final_date = DataValidation::check_importer_date($date);
-  if (empty($final_date)) {
-    return;
+  if (!empty($date)) {
+    $final_date = DataValidation::check_importer_date($date);
+    if (empty($final_date)) {
+      return;
+    }
   }
 
-  //checking category value
-  $category_allowed_value = DataValidation::get_field_allowed_value('field_ct_cashout_category', 'node');
-  $category_value = array_search($category, $category_allowed_value);
-  if ($category_value === FALSE) {
-    return;
-  }
-  //checking cashout category value
-  $cashoutcategory_allowed_value = DataValidation::get_field_allowed_value('field_ct_cashout_sub_category', 'node');
-  $cashoutcategory_value = array_search($cashoutcategory, $cashoutcategory_allowed_value);
-  if ($cashoutcategory_value === FALSE) {
-    return;
-  }
-  //checking cashout category value
-  $expendtype_allowed_value = DataValidation::get_field_allowed_value('field_ct_cashoutflow_expend_type', 'node');
-  $expendtype = strtolower($expendtype);
-  if (!isset($expendtype_allowed_value[$expendtype])) {
-    return;
+  if (!empty($category)) {
+    //checking category value
+    $category_allowed_value = DataValidation::get_field_allowed_value('field_ct_cashout_category', 'node');
+    $category_value = array_search($category, $category_allowed_value);
+    if ($category_value === FALSE) {
+      return;
+    }
   }
 
-  $node = Node::create([
-  'type'  => 'cash_outflow',
-  'title' => 'Test content',
-  'field_ct_cashflow_amount' => [
-    'value' => $amount,
-  ],
-  'field_ct_cashflow_date' => [
-    'value' => $final_date,
-  ],
-  'field_ct_cashflow_project' => [
-    'target_id' => $project_tid,
-  ],
-  'field_ct_cashout_category' => [
-    'value' => $category_value,
-  ],
-  'field_ct_cashout_sub_category' => [
-    'value' => $cashoutcategory_value,
-  ],
-  'field_ct_cashoutflow_expend_type' => [
-    'value' => $expendtype,
-  ],
-  'body' => [
-    'value' => $description,
-  ],
-  ]);
+  if (!empty($cashoutcategory)) {
+    //checking cashout category value
+    $cashoutcategory_allowed_value = DataValidation::get_field_allowed_value('field_ct_cashout_sub_category', 'node');
+    $cashoutcategory_value = array_search($cashoutcategory, $cashoutcategory_allowed_value);
+    if ($cashoutcategory_value === FALSE) {
+      return;
+    }
+  }
 
+  if (!empty($expendtype)) {
+    //checking cashout category value
+    $expendtype_allowed_value = DataValidation::get_field_allowed_value('field_ct_cashoutflow_expend_type', 'node');
+    $expendtype_value = strtolower($expendtype);
+    if (!isset($expendtype_allowed_value[$expendtype_value])) {
+      return;
+    }
+  }
+  // $node = Node::create([
+  // 'type'  => 'cash_outflow',
+  // 'title' => 'Test content',
+  // 'field_ct_cashflow_amount' => [
+  //   'value' => $amount,
+  // ],
+  // 'field_ct_cashflow_date' => [
+  //   'value' => $final_date,
+  // ],
+  // 'field_ct_cashflow_project' => [
+  //   'target_id' => $project_tid,
+  // ],
+  // 'field_ct_cashout_category' => [
+  //   'value' => $category_value,
+  // ],
+  // 'field_ct_cashout_sub_category' => [
+  //   'value' => $cashoutcategory_value,
+  // ],
+  // 'field_ct_cashoutflow_expend_type' => [
+  //   'value' => $expendtype_value,
+  // ],
+  // 'body' => [
+  //   'value' => $description,
+  // ],
+  // ]);
+  $node_array = array();
+  $node_array['type'] = 'cash_outflow';
+  $node_array['title'] = 'cash_outflow';
+  if (isset($amount)) {
+    $node_array['field_ct_cashflow_amount']['value'] = $amount;
+  }
+  if (isset($final_date)) {
+    $node_array['field_ct_cashflow_date']['value'] = $final_date;
+  }
+  if (isset($project_tid)) {
+    $node_array['field_ct_cashflow_project']['target_id'] = $project_tid;
+  }
+  if (isset($category_value)) {
+    $node_array['field_ct_cashout_category']['value'] = $category_value;
+  }
+  if (isset($cashoutcategory_value)) {
+    $node_array['field_ct_cashout_sub_category']['value'] = $cashoutcategory_value;
+  }
+  if (isset($expendtype_value)) {
+    $node_array['field_ct_cashoutflow_expend_type']['value'] = $expendtype_value;
+  }
+  if (isset($description)) {
+    $node_array['body']['value'] = $description;
+  }
+
+  $node = Node::create($node_array);
   $node->save();
   return TRUE;
 }
@@ -135,48 +173,49 @@ function _save_cash_inflow_node($data, $header) {
   $description = isset($data[array_search('description', $header)]) ? $data[array_search('description', $header)] : NULL;
   $servicetype = isset($data[array_search('servicetype', $header)]) ? $data[array_search('servicetype', $header)] : NULL;
   $amount = isset($data[array_search('amount', $header)]) ? $data[array_search('amount', $header)] : NULL;
+
+  $service_tid = $final_date = $project_tid = NULL;
   //check project value
-  if (!DataValidation::check_taxonomy_term($project, 'vocab_project')) {
-    //todo logging the error.
-    return;
+  if (!empty($project)) {
+    if (!DataValidation::check_taxonomy_term($project, 'vocab_project')) {
+      //todo logging the error.
+      return;
+    }
+    $project_tid_array = taxonomy_term_load_multiple_by_name($project, 'vocab_project');
+    //TODO use devel
+    //getting tid for term
+    $project_tid = ((array_keys($project_tid_array)[0]));
   }
-  if (!DataValidation::check_taxonomy_term($servicetype, 'vocab_service_type')) {
-    //todo logging the error.
-    return;
+  if (!empty($date)) {
+    $final_date = DataValidation::check_importer_date($date);
+    if (empty($final_date)) {
+      return;
+    }
   }
-  $final_date = DataValidation::check_importer_date($date);
-  if (empty($final_date)) {
-    return;
+
+  if (!empty($servicetype)) {
+    $service_tid_array = taxonomy_term_load_multiple_by_name($servicetype, 'vocab_service_type');
+    $service_tid = ((array_keys($service_tid_array)[0]));
   }
-  //TODO use devel
-  //getting tid for term
+  $node_array['type'] = 'cash_inflow';
+  $node_array['title'] = 'cash_inflow';
+  if (isset($amount)) {
+    $node_array['field_ct_cashflow_amount']['value'] = $amount;
+  }
+  if (isset($final_date)) {
+    $node_array['field_ct_cashflow_date']['value'] = $final_date;
+  }
+  if (isset($project_tid)) {
+    $node_array['field_ct_cashflow_project']['target_id'] = $project_tid;
+  }
+  if (isset($service_tid)) {
+    $node_array['field_ct_service_type']['target_id'] = $service_tid;
+  }
+  if (isset($description)) {
+    $node_array['body']['value'] = $description;
+  }
 
-  $project_tid_array = taxonomy_term_load_multiple_by_name($project, 'vocab_project');
-  $project_tid = ((array_keys($project_tid_array)[0]));
-
-  $service_tid_array = taxonomy_term_load_multiple_by_name($servicetype, 'vocab_service_type');
-  $service_tid = ((array_keys($service_tid_array)[0]));
-
-  $node = Node::create([
-  'type'        => 'cash_inflow',
-  'title'       => 'Test content',
-  'field_ct_cashflow_amount' => [
-    'value' => $amount,
-  ],
-  'field_ct_cashflow_date' => [
-    'value' => $final_date,
-  ],
-  'field_ct_cashflow_project' => [
-    'target_id' => $project_tid,
-  ],
-  'field_ct_service_type' => [
-    'target_id' => $service_tid,
-  ],
-  'body' => [
-    'value' => $description,
-  ],
-  ]);
-
+  $node = Node::create($node_array);
   $node->save();
   return TRUE;
 }
