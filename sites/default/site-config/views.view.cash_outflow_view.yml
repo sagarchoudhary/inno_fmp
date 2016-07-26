@@ -16,6 +16,7 @@ dependencies:
     - datetime
     - node
     - options
+    - rest
     - taxonomy
     - user
 id: cash_outflow_view
@@ -787,6 +788,22 @@ display:
         type: normal
         title: 'Cash Outflow View'
         menu_name: main
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: '<a href="/cash-outflow-csv">Cash Outflow CSV</a>'
+            format: basic_html
+          plugin_id: text
+      defaults:
+        footer: false
     cache_metadata:
       max-age: 0
       contexts:
@@ -794,6 +811,62 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_ct_cashflow_amount'
+        - 'config:field.storage.node.field_ct_cashflow_date'
+        - 'config:field.storage.node.field_ct_cashflow_project'
+        - 'config:field.storage.node.field_ct_cashout_category'
+        - 'config:field.storage.node.field_ct_cashout_sub_category'
+        - 'config:field.storage.node.field_ct_cashoutflow_expend_type'
+  rest_export_1:
+    display_plugin: rest_export
+    id: rest_export_1
+    display_title: 'REST export'
+    position: 2
+    display_options:
+      display_extenders: {  }
+      path: cash-outflow-csv
+      style:
+        type: serializer
+        options:
+          uses_fields: false
+          formats:
+            csv: csv
+      row:
+        type: data_field
+        options:
+          field_options:
+            title:
+              alias: ''
+              raw_output: false
+            field_ct_cashflow_amount:
+              alias: amount
+              raw_output: false
+            field_ct_cashout_sub_category:
+              alias: subcategory
+              raw_output: false
+            field_ct_cashout_category:
+              alias: category
+              raw_output: false
+            field_ct_cashflow_date:
+              alias: date
+              raw_output: false
+            field_ct_cashoutflow_expend_type:
+              alias: expendtype
+              raw_output: false
+            field_ct_cashflow_project:
+              alias: projectname
+              raw_output: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
         - user
         - 'user.node_grants:view'
         - user.permissions
