@@ -1,0 +1,30 @@
+uuid: 9ead817c-652b-4beb-b3b4-250b76644d42
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.cash_inflow_pie_chart_service
+  module:
+    - system
+    - views
+  theme:
+    - adminimal_theme
+id: views_block__cash_inflow_pie_chart_service_block_1
+theme: adminimal_theme
+region: content
+weight: -6
+provider: null
+plugin: 'views_block:cash_inflow_pie_chart_service-block_1'
+settings:
+  id: 'views_block:cash_inflow_pie_chart_service-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /inflow-graph
+    negate: false
+    context_mapping: {  }
