@@ -1,0 +1,5 @@
+name: Monthly Mail API
+description: Api for all type of monthly mails mails.
+core: 8.x
+package: Custom
+type: module
