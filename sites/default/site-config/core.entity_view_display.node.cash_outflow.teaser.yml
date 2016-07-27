@@ -23,4 +23,10 @@ content:
     third_party_settings: {  }
   links:
     weight: 100
-hidden: {  }
+hidden:
+  field_ct_cashflow_amount: true
+  field_ct_cashflow_date: true
+  field_ct_cashflow_project: true
+  field_ct_cashout_category: true
+  field_ct_cashout_sub_category: true
+  field_ct_cashoutflow_expend_type: true
