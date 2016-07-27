@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_ct_service_type
     - node.type.cash_inflow
     - taxonomy.vocabulary.vocab_project
     - taxonomy.vocabulary.vocab_service_type
@@ -69,9 +68,6 @@ display:
               sort: '0'
             field_ct_cashflow_amount:
               enabled: 1
-              sort: '0'
-            field_ct_service_type:
-              enabled: 0
               sort: '0'
           xAxis:
             labelField: name
@@ -203,69 +199,6 @@ display:
           multi_type: separator
           field_api_classes: false
           plugin_id: field
-        field_ct_service_type:
-          id: field_ct_service_type
-          table: node__field_ct_service_type
-          field: field_ct_service_type
-          relationship: reverse__node__field_ct_cashflow_project
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings: {  }
-          group_column: target_id
-          group_columns:
-            target_id: target_id
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
       filters:
         vid:
           id: vid
@@ -389,8 +322,7 @@ display:
         - url
         - user
         - user.permissions
-      tags:
-        - 'config:field.storage.node.field_ct_service_type'
+      tags: {  }
   block_1:
     display_plugin: block
     id: block_1
@@ -406,5 +338,4 @@ display:
         - url
         - user
         - user.permissions
-      tags:
-        - 'config:field.storage.node.field_ct_service_type'
+      tags: {  }
