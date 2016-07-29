@@ -1,0 +1,13 @@
+mygraphjs:
+  js:
+    https://code.highcharts.com/highcharts.js: { type: external, minified: true }
+    https://code.highcharts.com/modules/exporting.js: { type: external, minified: true }
+    https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery: { type: external, minified: true }
+    js/my_block.js: {}
+    # dependencies:
+    # # jQuery is not included by default, so we add it as a dependency
+    # - core/jquery
+    # # We are also going to use jQuery.once so that code doesn't trigger multiple times.
+    # - core/jquery.once
+    # # drupal and drupalSettings are not included by default either.
+    # - core/drupal
