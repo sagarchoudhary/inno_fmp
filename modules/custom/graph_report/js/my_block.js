@@ -1,7 +1,10 @@
 (function ($) {
   Drupal.behaviors.mygraph = {
     attach: function (context, settings) {
-      // jQuery once ensures that code does not run after an AJAX or other function that calls Drupal.attachBehaviors().
+        var a = drupalSettings.graph_report.mygraphjs.testvar;
+       //var a = 'sagar';
+       console.log(a);
+      //jQuery once ensures that code does not run after an AJAX or other function that calls Drupal.attachBehaviors().
     $('#container').highcharts({
         chart: {
             type: 'column'
