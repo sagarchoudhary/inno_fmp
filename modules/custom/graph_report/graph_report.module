@@ -1,0 +1,9 @@
+<?php
+
+function graph_report_theme() {
+  return [
+    'mygraph' => [
+      'variables' => ['project' => NULL, 'project_data' => NULL ],
+    ],
+  ];
+}

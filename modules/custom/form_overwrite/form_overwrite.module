@@ -1,0 +1,39 @@
+<?php
+/**
+* Implements hook_form_alter().
+*/
+function form_overwrite_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  if($form['#id'] == "views-exposed-form-cash-inflow-view-page-1" || $form['#id'] == "views-exposed-form-cash-outflow-view-page-1") {
+    //dpm($form_id);
+    $form['field_ct_cashflow_date_value'] = array(
+          '#type' => 'hidden',
+        );
+
+    $form['new_field_ct_cashflow_date_value'] = array(
+          '#type' => 'date',
+          '#title' => t('Date'),
+        );
+    if($form_state->getUserInput()['new_field_ct_cashflow_date_value'] != null) {
+    // $form['field_ct_cashflow_date_value'] = $form_state->getUserInput()['new_field_ct_cashflow_date_value'];
+    $date = $form_state->getUserInput()['new_field_ct_cashflow_date_value'];
+    $date1 = date('m/d/Y', strtotime("+1 day", strtotime($date)));
+    //dpm($date1);
+    $form['field_ct_cashflow_date_value']['#value'] = $date1;
+    //dpm($form['field_ct_cashflow_date_value']);
+  }
+    // $first = array_shift($form['#submit']);
+    // array_unshift($form['#submit'], $first, 'date_value_submit');
+    }
+}
+
+function date_value_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if($form_state->getUserInput()['new_field_ct_cashflow_date_value'] != null) {
+    // $form['field_ct_cashflow_date_value'] = $form_state->getUserInput()['new_field_ct_cashflow_date_value'];
+    $date = $form_state->getUserInput()['new_field_ct_cashflow_date_value'];
+    $date1 = date('m/d/Y', strtotime("+1 day", strtotime($date)));
+    dpm($date1);
+    $form['field_ct_cashflow_date_value']['#value'] = $date1;
+    dpm($form['field_ct_cashflow_date_value']);
+  }
+}

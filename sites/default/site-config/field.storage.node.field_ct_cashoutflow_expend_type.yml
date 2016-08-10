@@ -15,8 +15,8 @@ settings:
       value: business
       label: Business
     -
-      value: maitenance
-      label: Maitenance
+      value: maintenance
+      label: Maintenance
   allowed_values_function: ''
 module: options
 locked: false

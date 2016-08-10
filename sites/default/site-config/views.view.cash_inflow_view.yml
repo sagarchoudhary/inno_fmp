@@ -560,6 +560,165 @@ display:
           plugin_id: text
       defaults:
         footer: false
+        filters: false
+        filter_groups: false
+      filters:
+        status:
+          value: true
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            cash_inflow: cash_inflow
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        field_ct_cashflow_project_target_id:
+          id: field_ct_cashflow_project_target_id
+          table: node__field_ct_cashflow_project
+          field: field_ct_cashflow_project_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: and
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_ct_cashflow_project_target_id_op
+            label: 'Project name'
+            description: ''
+            use_operator: false
+            operator: field_ct_cashflow_project_target_id_op
+            identifier: field_ct_cashflow_project_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: vocab_project
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_ct_service_type_target_id:
+          id: field_ct_service_type_target_id
+          table: node__field_ct_service_type
+          field: field_ct_service_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: and
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_ct_service_type_target_id_op
+            label: 'Service Type'
+            description: ''
+            use_operator: false
+            operator: field_ct_service_type_target_id_op
+            identifier: field_ct_service_type_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: vocab_service_type
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_ct_cashflow_date_value:
+          id: field_ct_cashflow_date_value
+          table: node__field_ct_cashflow_date
+          field: field_ct_cashflow_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_ct_cashflow_date_value_op
+            label: Date
+            description: ''
+            use_operator: false
+            operator: field_ct_cashflow_date_value_op
+            identifier: field_ct_cashflow_date_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: 0
       contexts:

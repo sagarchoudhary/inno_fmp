@@ -1,0 +1,26 @@
+uuid: 54de6602-9720-4a9c-aa6e-df72a98f3240
+langcode: en
+status: true
+dependencies:
+  module:
+    - graph_report
+    - system
+  theme:
+    - adminimal_theme
+id: outflowblock
+theme: adminimal_theme
+region: content
+weight: -7
+provider: null
+plugin: outflowblock
+settings:
+  id: outflowblock
+  label: 'Outflow Block'
+  provider: graph_report
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: /cashoutflowblock
+    negate: false
+    context_mapping: {  }

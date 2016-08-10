@@ -1,0 +1,5 @@
+name: Graph Report
+description: Api Graph Report.
+core: 8.x
+package: Custom
+type: module
