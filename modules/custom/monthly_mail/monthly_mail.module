@@ -1,0 +1,25 @@
+<?php
+use Drupal\monthly_mail\MonthlyMail\ExpectedCashflow;
+
+/**
+ * Implements hook_cron().
+ */
+function monthly_mail_cron() {
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $langcode = \Drupal::currentUser()->getPreferredLangcode();
+  $mailManager->mail('monthly_mail', 'monthly_mail_expected_cashflow', 'sagar.choudhary@innoraft.com', $langcode, $params = array(), $reply = NULL, $send = TRUE);
+}
+
+/**
+ * Implements hook_mail().
+ */
+function monthly_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'monthly_mail_expected_cashflow':
+      $expected_inflow = ExpectedCashflow::get_expected_monthly_cashflow('cash_inflow');
+      $expected_outflow = ExpectedCashflow::get_expected_monthly_cashflow('cash_outflow');
+      $message['subject'] = t('Monthly expected cashflow');
+      $message['body'][] = 'Expected Income ' . $expected_inflow. ' and Expected cashoutflow is ' .  $expected_outflow;
+      break;
+  }
+}
