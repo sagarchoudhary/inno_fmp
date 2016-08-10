@@ -1,47 +1,42 @@
 (function ($) {
   Drupal.behaviors.mygraph = {
     attach: function (context, settings) {
-        var a = drupalSettings.graph_report.mygraphjs.testvar;
-       //var a = 'sagar';
-       console.log(a);
+        var title  = drupalSettings.graph_report.mygraphjs.title;
+        var subtit = drupalSettings.graph_report.mygraphjs.subtitle;
+        var xAxis  = drupalSettings.graph_report.mygraphjs.xAxis;
+        var yAxis  = drupalSettings.graph_report.mygraphjs.yAxis;
+        var serie = drupalSettings.graph_report.mygraphjs.series;
+        var series = [];
+
+        $.each(serie,function(index,value){
+           var person = {name:index ,data:value};
+            series.push(person);
+        });
       //jQuery once ensures that code does not run after an AJAX or other function that calls Drupal.attachBehaviors().
     $('#container').highcharts({
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Monthly Income Project wise'
+            text: title
         },
         subtitle: {
-            text: 'Graph Monthly income'
+            text: subtit
         },
         xAxis: {
-            categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
-            ],
+            categories: xAxis,
             crosshair: true
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'Cash Inflow'
+                text: yAxis
             }
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                '<td style="padding:0"><b>{point.y:.1f} lacs</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -52,19 +47,7 @@
                 borderWidth: 0
             }
         },
-        series: [{
-            name: 'SIS',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-        }, {
-            name: 'EBNL',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-        }, {
-            name: 'SNU',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-        }]
+        series: series
     });
 }
   };
