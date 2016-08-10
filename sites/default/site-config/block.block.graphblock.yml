@@ -1,0 +1,26 @@
+uuid: 3fa4673f-cfbb-4cee-af56-d2a274dcb3b6
+langcode: en
+status: true
+dependencies:
+  module:
+    - graph_report
+    - system
+  theme:
+    - adminimal_theme
+id: graphblock
+theme: adminimal_theme
+region: content
+weight: -6
+provider: null
+plugin: graphblock
+settings:
+  id: graphblock
+  label: 'Graph Block'
+  provider: graph_report
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: /cashinflowblock
+    negate: false
+    context_mapping: {  }
