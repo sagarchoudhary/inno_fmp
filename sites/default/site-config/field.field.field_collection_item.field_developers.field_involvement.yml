@@ -1,0 +1,23 @@
+uuid: ccc8068b-2ed3-44ac-add5-d25f2dcd33ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.field_collection_item.field_involvement
+    - field_collection.field_collection.field_developers
+id: field_collection_item.field_developers.field_involvement
+field_name: field_involvement
+entity_type: field_collection_item
+bundle: field_developers
+label: 'Percentage involvement'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: '%'
+field_type: integer

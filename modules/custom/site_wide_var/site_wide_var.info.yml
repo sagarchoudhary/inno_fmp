@@ -1,0 +1,5 @@
+name: Side Wide Variables
+description: To store side wide variables.
+core: 8.x
+package: Custom
+type: module

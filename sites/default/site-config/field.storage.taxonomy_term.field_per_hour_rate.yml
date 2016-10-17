@@ -1,0 +1,20 @@
+uuid: af60935f-90c0-4b4f-bb71-4c830c0c81f9
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_per_hour_rate
+field_name: field_per_hour_rate
+entity_type: taxonomy_term
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

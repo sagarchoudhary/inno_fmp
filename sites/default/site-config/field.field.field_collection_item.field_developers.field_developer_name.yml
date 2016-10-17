@@ -1,0 +1,28 @@
+uuid: d970b8e8-e566-42e1-ad55-9dfabb996dfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.field_collection_item.field_developer_name
+    - field_collection.field_collection.field_developers
+id: field_collection_item.field_developers.field_developer_name
+field_name: field_developer_name
+entity_type: field_collection_item
+bundle: field_developers
+label: Developer
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,28 @@
+uuid: 7938ad5d-8077-4467-95ee-e8f956a8a298
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_developers.field_developer_name
+    - field.field.field_collection_item.field_developers.field_involvement
+    - field_collection.field_collection.field_developers
+id: field_collection_item.field_developers.default
+targetEntityType: field_collection_item
+bundle: field_developers
+mode: default
+content:
+  field_developer_name:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_involvement:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+hidden: {  }

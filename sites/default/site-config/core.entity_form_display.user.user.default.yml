@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_name
+    - field.field.user.user.field_salary
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -19,6 +21,19 @@ content:
     weight: -10
   contact:
     weight: 5
+  field_name:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_salary:
+    weight: 8
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
   language:
     weight: 0
   timezone:

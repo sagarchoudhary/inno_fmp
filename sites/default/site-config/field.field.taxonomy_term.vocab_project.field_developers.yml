@@ -1,0 +1,25 @@
+uuid: 05fc008e-0ad6-430f-a063-5e703408c62e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_developers
+    - taxonomy.vocabulary.vocab_project
+  module:
+    - field_collection
+id: taxonomy_term.vocab_project.field_developers
+field_name: field_developers
+entity_type: taxonomy_term
+bundle: vocab_project
+label: 'Developers Involved'
+description: ''
+required: true
+translatable: false
+default_value:
+  - {  }
+  - {  }
+  - {  }
+  - {  }
+default_value_callback: ''
+settings: {  }
+field_type: field_collection

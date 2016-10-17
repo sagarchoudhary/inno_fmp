@@ -1,0 +1,29 @@
+uuid: 268ebbf2-f7ca-466b-bb45-0abf372a18cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_developers.field_developer_name
+    - field.field.field_collection_item.field_developers.field_involvement
+    - field_collection.field_collection.field_developers
+id: field_collection_item.field_developers.default
+targetEntityType: field_collection_item
+bundle: field_developers
+mode: default
+content:
+  field_developer_name:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_involvement:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+hidden: {  }

@@ -1,0 +1,23 @@
+uuid: dd399e48-6d39-49d2-9392-5c53ad344f90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_completion_months
+    - taxonomy.vocabulary.vocab_project
+id: taxonomy_term.vocab_project.field_completion_months
+field_name: field_completion_months
+entity_type: taxonomy_term
+bundle: vocab_project
+label: 'Completion Months'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

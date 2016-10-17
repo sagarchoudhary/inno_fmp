@@ -15,25 +15,49 @@ function form_overwrite_form_alter(&$form, \Drupal\Core\Form\FormStateInterface 
           '#title' => t('Date'),
         );
     if($form_state->getUserInput()['new_field_ct_cashflow_date_value'] != null) {
-    // $form['field_ct_cashflow_date_value'] = $form_state->getUserInput()['new_field_ct_cashflow_date_value'];
-    $date = $form_state->getUserInput()['new_field_ct_cashflow_date_value'];
-    $date1 = date('m/d/Y', strtotime("+1 day", strtotime($date)));
-    //dpm($date1);
-    $form['field_ct_cashflow_date_value']['#value'] = $date1;
-    //dpm($form['field_ct_cashflow_date_value']);
-  }
+      // $form['field_ct_cashflow_date_value'] = $form_state->getUserInput()['new_field_ct_cashflow_date_value'];
+      $date = $form_state->getUserInput()['new_field_ct_cashflow_date_value'];
+      $date1 = date('m/d/Y', strtotime("+1 day", strtotime($date)));
+      //dpm($date1);
+      $form['field_ct_cashflow_date_value']['#value'] = $date1;
+      //dpm($form['field_ct_cashflow_date_value']);
+    }
     // $first = array_shift($form['#submit']);
     // array_unshift($form['#submit'], $first, 'date_value_submit');
-    }
-}
-
-function date_value_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  if($form_state->getUserInput()['new_field_ct_cashflow_date_value'] != null) {
-    // $form['field_ct_cashflow_date_value'] = $form_state->getUserInput()['new_field_ct_cashflow_date_value'];
-    $date = $form_state->getUserInput()['new_field_ct_cashflow_date_value'];
-    $date1 = date('m/d/Y', strtotime("+1 day", strtotime($date)));
-    dpm($date1);
-    $form['field_ct_cashflow_date_value']['#value'] = $date1;
-    dpm($form['field_ct_cashflow_date_value']);
+  }
+  if ($form['#id'] == "taxonomy-term-vocab-project-form") {
+    dpm($form);
+    dpm($form_state);
+    $form['#validate'][] = 'project_term_validate';
   }
 }
+
+function project_term_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  dpm($form_state);
+  dpm($form);
+  // dpm($form_state->getUserInput());
+
+  if($form_state->getUserInput()['field_project_type'] == 0) {
+    if(empty($form_state->getValue('field_total_cost')[0]['value'])) {
+      $form_state->setErrorByName('field_total_cost',t("Total Cost should not be empty."));
+    }
+    if(empty($form_state->getValue('field_completion_months')[0]['value'])) {
+      $form_state->setErrorByName('field_completion_months',t("Completion months should not be empty."));
+    }
+    if(!empty($form_state->getValue('field_per_hour_rate')[0]['value'])) {
+      $form_state->setErrorByName('field_per_hour_rate',t("Per Hour rate must be empty in case of fixed project type"));
+    }
+  }
+  else {
+    if(!empty($form_state->getValue('field_total_cost')[0]['value'])) {
+      $form_state->setErrorByName('field_total_cost',t("Total Cost must be empty in case of Hourly project type."));
+    }
+    if(!empty($form_state->getValue('field_completion_months')[0]['value'])) {
+      $form_state->setErrorByName('field_completion_months',t("Completion months must be empty in case of Hourly project type."));
+    }
+    if(empty($form_state->getValue('field_per_hour_rate')[0]['value'])) {
+      $form_state->setErrorByName('field_per_hour_rate',t("Per Hour rate should not be empty."));
+    }
+  }
+}
+

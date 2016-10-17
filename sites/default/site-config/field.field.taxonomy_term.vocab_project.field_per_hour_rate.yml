@@ -1,0 +1,23 @@
+uuid: 209b24cf-25fe-4934-b321-d151f9ee0eb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_per_hour_rate
+    - taxonomy.vocabulary.vocab_project
+id: taxonomy_term.vocab_project.field_per_hour_rate
+field_name: field_per_hour_rate
+entity_type: taxonomy_term
+bundle: vocab_project
+label: 'Per Hour Rate'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ₹
+  suffix: ''
+field_type: integer

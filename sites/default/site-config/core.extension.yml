@@ -18,6 +18,7 @@ module:
   dynamic_page_cache: 0
   editor: 0
   field: 0
+  field_collection: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -41,6 +42,7 @@ module:
   search: 0
   serialization: 0
   shortcut: 0
+  site_wide_var: 0
   system: 0
   taxonomy: 0
   text: 0

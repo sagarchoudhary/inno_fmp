@@ -1,0 +1,7 @@
+site_wide_var.settings:
+    path: 'site-wide/config'
+    defaults:
+        _form: '\Drupal\site_wide_var\Form\GlobalSettingsForm'
+        _title: 'Set Site Wide Global Values'
+    requirements:
+        _permission: 'administer site configuration'

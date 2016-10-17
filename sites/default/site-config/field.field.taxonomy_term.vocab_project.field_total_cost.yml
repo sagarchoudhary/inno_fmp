@@ -1,0 +1,23 @@
+uuid: c9ed8114-a02b-4820-b9e2-95b4283654ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_total_cost
+    - taxonomy.vocabulary.vocab_project
+id: taxonomy_term.vocab_project.field_total_cost
+field_name: field_total_cost
+entity_type: taxonomy_term
+bundle: vocab_project
+label: 'Total Cost'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ₹
+  suffix: ''
+field_type: integer

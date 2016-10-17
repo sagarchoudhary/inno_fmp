@@ -1,0 +1,20 @@
+uuid: 71f8144d-6c76-4c36-8ab6-c00e3d98fc09
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_collection
+    - user
+id: field_collection_item.field_developer_name
+field_name: field_developer_name
+entity_type: field_collection_item
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

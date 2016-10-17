@@ -1,0 +1,63 @@
+uuid: 1486dd78-7798-485c-9f61-f24f75b924d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.vocab_project.field_completion_months
+    - field.field.taxonomy_term.vocab_project.field_developers
+    - field.field.taxonomy_term.vocab_project.field_per_hour_rate
+    - field.field.taxonomy_term.vocab_project.field_project_type
+    - field.field.taxonomy_term.vocab_project.field_total_cost
+    - taxonomy.vocabulary.vocab_project
+  module:
+    - field_collection
+    - text
+id: taxonomy_term.vocab_project.default
+targetEntityType: taxonomy_term
+bundle: vocab_project
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_completion_months:
+    weight: 6
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  field_developers:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_embed
+  field_per_hour_rate:
+    weight: 4
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  field_project_type:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+  field_total_cost:
+    weight: 5
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  name:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  path: true

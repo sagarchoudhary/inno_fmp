@@ -1,0 +1,20 @@
+uuid: fb884fa2-594e-4b48-82ea-5c5836dba694
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_total_cost
+field_name: field_total_cost
+entity_type: taxonomy_term
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
